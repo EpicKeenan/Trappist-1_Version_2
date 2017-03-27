@@ -1,0 +1,81 @@
+<!DOCTYPE hmtl>
+
+<html>
+  <head>
+    
+    <title> Trappist-1 </title>
+    
+    <style>
+    	body{
+    		margin: 0;
+    		overflow: hidden;
+    	}
+    	
+    	canvas{
+    		background: red;
+    	}
+    
+    </style>
+    
+  </head>
+  
+  <body> 
+    
+    <canvas id="Earth"></canvas>
+    
+    <script src="three.min.js"></script>
+    
+    <script> 
+    	
+    	//Renderer
+    	
+    	var renderer = new THREE.WebGLRenderer({canvas: document.getElementById("Earth")});
+    	
+    	renderer.setSize(window.innerWidth, window.innerHeight);
+    	renderer.setClearColor(0x000000);
+    	renderer.setPixelRatio(window.devicePixelRatio);
+    	
+    	//Camera
+    	
+    	var camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
+    	
+    	//Scene
+    	
+    	var scene = new THREE.Scene();
+    	
+    	//Lights
+    	
+    	var light = new THREE.AmbientLight(0xffffff, 0.5);
+    	scene.add(light)
+    	
+    	var light_point = new THREE.PointLight(0xffffff, 0.5);
+    	scene.add(light_point)
+    	
+    	//Controls
+    	
+    	
+    	//Object
+    	
+    	var geometry = new THREE.CubeGeometry(100, 100, 100);
+    	var material = new THREE.MeshLambertMaterial({color: 0xf3ffe2});
+    	var mesh = new THREE.Mesh(geometry, material);
+    	mesh.position.set(0, 0, -1000)
+    	
+    	scene.add(mesh)
+    	
+    	requestAnimationFrame(render);
+    	
+    	function render(){
+    		mesh.rotation.x += 0.01;
+    		mesh.rotation.y += 0.01;
+    		renderer.render(scene, camera);
+    		requestAnimationFrame(render);
+    		
+    	}		 
+    </script>
+    
+  </body>
+
+</html>
+
+

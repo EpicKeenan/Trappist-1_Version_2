@@ -1,2 +1,2 @@
-# Trappist-1_Version_2
-Three Js implementation
+# Trappist-1 Website
+The official website for the Trappist-1 system.
